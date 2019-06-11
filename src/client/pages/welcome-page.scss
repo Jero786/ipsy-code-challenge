@@ -1,0 +1,34 @@
+@import '../style/commons';
+
+.bys-welcome-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $grayDarker;
+  height: 100vh;
+
+
+  &__box {
+    text-align: center;
+    margin-top: -50vh;
+
+    @include bp(xs) {
+      margin-top: -65vh
+    }
+
+    h1 {
+      font-size: 5em;
+      font-weight: 100;
+      margin-top: 0;
+
+      @include bp(xs) {
+        font-size: 4em;
+      }
+    }
+
+    &-title {
+      color: $white;
+      text-shadow: 5px 5px 5px black;
+    }
+  }
+}

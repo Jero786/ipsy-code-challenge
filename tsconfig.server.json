@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "allowJs": true,
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": ["es2017"],
+    "outDir": "dist/server"
+  },
+    "exclude": ["dist", "src/server/**/*.legacy.*"],
+    "include": ["src/server/**/*.ts"]
+}
