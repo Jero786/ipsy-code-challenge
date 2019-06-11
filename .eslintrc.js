@@ -30,6 +30,8 @@ module.exports = {
     rules: {
         'import/prefer-default-export': 'off',
         'no-param-reassign': 'off',
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
         'prettier/prettier': 'error',
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.ts', '.tsx'] }],
         '@typescript-eslint/explicit-function-return-type': 'off',

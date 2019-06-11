@@ -16,15 +16,11 @@ const apiService = () => next => action => {
 
     const url = `${baseUrl}${path}`;
 
-    console.log(`*** API REST ${method} - [${url}] ***`);
-
     return fetch(url, method, body).then(
         res => handleResponse(res, action, next),
         err => handleErrors(err, action, next),
     );
 };
-
-export default apiService;
 
 function handleErrors(err, action, next) {
     next({
@@ -45,3 +41,5 @@ function handleResponse(res, action, next) {
 
     return res;
 }
+
+export default apiService;
