@@ -58,15 +58,15 @@ $ npm run test:watch
 
 * Re-Ducks: Following this proposal structure improve modularity and encapsulation (only expose `index.tsx` from each dock folder, for instance: `state/ducks/catalog/index.ts`). Also allow us to scale better and improve testability of actions, action creators, reducers, operators and selectors in a really flexible way.
 * Typescript: Implementing typing in a dynamic interpreted language like JS, help us and also to Ides, to catch typos and errors while your are coding. That is a really important when you app will be large.
-* Selectors (SelectorState): Implementing selectors improve complex operations and also to lifting our state in a more granular way. (Help us to keep following SRP principle)
-* Selectors Actions: Similar concept to State selectors, but apply to state. The main difference that only help us to know how retrieve some portion of a dense payload action from data response from an action.
+* Selectors (`action-selector`): Implementing selectors improve complex operations and also to lifting our state in a more granular way. (Help us to keep following SRP principle)
+* Selectors Actions: Similar concept to State selectors, but apply to the response of payload async action. (really helpful when you response payload is really big)
+* Filter async action payload response(`FormatterField[]`):I create a Tree data structured named: `FormatterField`, which you can define the fields that you want to persist into our store.
 * Selectors name convention:`Selector name: get<Noun>`
-* Filter async action payload response: Just to assure that we save want store only the fields that we wanted. I create a type of data structured named: `FormatterField`, which you can build in a tree structure way, allowing filtered only the field that want to persist into our store.
 * Following top down best practice. (Most important and public collaborates first, like a news paper)
 * Favor React controller component over uncontrolled component. (In order to follow single source of truth principle as much as possible, and also to get component easier to work with).
 * BEM: using block element modifier and with some variation of SMACSS like (`is-visible` instead of `block--visible`) is a really clean way to style components. Also it's a really a performance way to style component instead use neested selectors. (you don't care any more about not pass to 3 nested level)
-* Server: the end-point should be prefixed with: `/api/v1`.
-* Using middleware to separate REST GET call to out action creators. (that allow us in a future to work in parallel with `redux-observable` if we wanted for more complex request calls)
+* Server: the end-point should be prefixed with: `/api/v1`. That help us to version our API, and also to be a common pre-fix url to apply easy filters, middlewares, etc.
+* REST calls in a middleware, instead of action creators: That allow to decrease the coupling between our action creators and libs to side-effect. Also make test simpler and our modules more isolates. Also give us teh possibility to implement in parallel with other libraries like `redux-observable` with Epics idea.
 * Action Types: All async action, should be post fixed:
 1. `REQUESTING_COMPLETED`
 1. `REQUESTING_FAILED`
