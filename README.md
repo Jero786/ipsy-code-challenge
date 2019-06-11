@@ -129,3 +129,7 @@ Some of reasons why I didn't like to connect by `Client Credentials` or `Implici
 * Implement some CI such as Circle or Travis.
 * E2E Testing with Cypress. It's really powerful implement it, in order to save time in the regressions testing.
 * Implement some Lib report in Backend side and also in front-end side to be sure that your app are working properly, otherwise send a email when throws some error.
+
+## Picture from a simple Home Page:
+
+![](https://i.ibb.co/yq4wbRq/Screen-Shot-2019-06-11-at-12-54-01-PM.png)
