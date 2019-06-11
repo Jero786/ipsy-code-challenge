@@ -1,5 +1,6 @@
 {
-    "name": "universal-nextjs-typescript-re-ducks",
+    "name": "ypsi-code-challenge",
+    "description": "A code challenge about connect with API-Spotify",
     "version": "1.0.0",
     "scripts": {
         "dev": "nodemon",
@@ -11,17 +12,11 @@
         "start": "cross-env NODE_ENV=production node dist/server"
     },
     "dependencies": {
-        "@types/cors": "^2.8.5",
-        "@types/morgan": "^1.7.35",
-        "@types/node": "^12.0.7",
-        "@types/spotify-api": "^0.0.1",
-        "@zeit/next-css": "^1.0.1",
-        "@zeit/next-sass": "^1.0.1",
-        "@zeit/next-typescript": "^1.1.1",
         "body-parser": "^1.19.0",
         "cookie-parser": "^1.4.4",
         "cors": "^2.8.5",
         "dotenv": "^8.0.0",
+        "enzyme": "^3.10.0",
         "express": "^4.17.1",
         "immutable": "^4.0.0-rc.12",
         "isomorphic-fetch": "^2.2.1",
@@ -42,10 +37,16 @@
         "redux-devtools-extension": "^2.13.8",
         "redux-immutable": "^4.0.0",
         "request": "^2.88.0",
-        "spotify-web-api-node": "^4.0.0",
-        "enzyme": "^3.10.0"
+        "spotify-web-api-node": "^4.0.0"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.5",
+        "@types/morgan": "^1.7.35",
+        "@types/node": "^12.0.7",
+        "@types/spotify-api": "^0.0.1",
+        "@zeit/next-css": "^1.0.1",
+        "@zeit/next-sass": "^1.0.1",
+        "@zeit/next-typescript": "^1.1.1",
         "@testing-library/react": "^8.0.1",
         "@types/body-parser": "^1.17.0",
         "@types/cookie-parser": "^1.4.1",
@@ -77,22 +78,11 @@
         "lint-staged": ">=8",
         "nodemon": "^1.19.0",
         "prettier": "^1.18.2",
+        "prettier-eslint": "^8.8.2",
         "pretty-quick": "^1.11.0",
         "react-test-renderer": "^16.8.6",
         "ts-jest": "^24.0.2",
         "ts-node": "^8.1.0",
         "typescript": "3.4.5"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged && ./node_modules/.bin/eslint --fix ."
-        }
-    },
-    "lint-staged": {
-        "*.{ts,tsx,js}": [
-            "eslint --fix",
-            "git add",
-            "jest --bail --findRelatedTests"
-        ]
     }
 }

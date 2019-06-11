@@ -82,6 +82,26 @@ In order to generate out of the box the dispatcher action by `api-service` middl
 * Immutablejs: For performance reason, allowing us to perform shallow equality and avoid unheeded rendering. (only for container component and reducer layer. In order to avoid problems when handling data, try to minimize the interoperability, and only keep your container component with immutable info. Lets dumb components with native objects.
 * Lodash: For cross browsing support, performance and reliable way to handler data. (only for dump component and action creators).
 * Prettier/husky/lint-staged/Eslint, Help us to avoid commit and push some code that don't follow with the default standards of the project and also prevent to push some code that don't pass the UT. (It's already configure airbnb, and eslint:recommended practices)
+
+## Spotify API integration
+
+Some of reasons why I chose connect by `Authorization Code`:
+
+1. The original example of this test project was create a part of a SaaS which give you a full platform for internment, such as Music, Video, etc. 
+The data that serve to the user, will be suggested, filtered, and in some cases changed, depends on the user which is log in. 
+In that business context, I need to have a full control over the information that need to display, so I need to create a kind of gateway/proxy from our API to 
+the the external API services. For that reason, among others, I think it's better to connect with Spotify API by `Authorization Code` fit better than `Client Credentials` and `Implicit Grant`.
+
+Some of reasons why I didn't like to connect by `Client Credentials` or `Implicit Grant`:
+
+1. SSR: We are not able to make server rendering, so request need to make it from node.jse server.
+1. Security: There are more security concert to make this request from the server, than the client side.
+1. The SDK: A really bad thing also to use SDK, if you don't have control over how to display, how to show.
+1. The warning from official document: 'The content and functionality may change without warning in future versions.’. If you are a SaaS, you need to be responsible, so that such of things you will not want to.
+1. Business rule, Be Your Safe: In order to populate our database with tracking information to improve our system of suggestion, we need to create like a gateway/proxy of request between our user platform and the external services.
+1. Also, making server side request you have more control, we could implement cache request, make filter, etc.
+
+
 ## Testing tips
 
 * Test should follow the SRP principle too (single responsibility principle). Do one thing, test one thing.
@@ -94,6 +114,7 @@ In order to generate out of the box the dispatcher action by `api-service` middl
 * Don't test action isolate, when testing reducer I like to test action as well in order to avoid unwanted testing. (I know that sounds like a integrating test instead of unit test, but it make sense for me.)
 
 ## Pending implementations
+
 * Implement Normalize, to have a flatten state. That help you to make more performance the shallow equality performed and also to deal with a easy structure store.
 * Implement some CI such as Circle or Travis.
 * E2E Testing with Cypress. It's really powerful implement it, in order to save time in the regressions testing.
