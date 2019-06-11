@@ -56,13 +56,12 @@ $ npm run test:watch
 
 ## Some design, principles and best practices
 
-* Re-Ducks: Following this proposal structure improve modularity and encapsulation (only expose `index.tsx` from each dock, for instance: `state/ducks/catalog`) between features, and allow to scale in a flexible way. Also to improve testability of Action Creators, reducers, etc.
-* Typescript: Implementing typing in a dynamic interpreted language like JS, help to us and Ides, to catch typos and errors while your are coding. That is a really important when you app will be large.
-* Single responsibility principle, one reason to change. Each class/function has their own level of the abstraction.
+* Re-Ducks: Following this proposal structure improve modularity and encapsulation (only expose `index.tsx` from each dock folder, for instance: `state/ducks/catalog/index.ts`). Also allow us to scale better and improve testability of actions, action creators, reducers, operators and selectors in a really flexible way.
+* Typescript: Implementing typing in a dynamic interpreted language like JS, help us and also to Ides, to catch typos and errors while your are coding. That is a really important when you app will be large.
 * Selectors (SelectorState): Implementing selectors improve complex operations and also to lifting our state in a more granular way. (Help us to keep following SRP principle)
 * Selectors Actions: Similar concept to State selectors, but apply to state. The main difference that only help us to know how retrieve some portion of a dense payload action from data response from an action.
-* Selectors name convention:```Selector name: get<Noun>`
-* Lifting action response payload: Just to assure that we save want store only the fields that we wanted. I create a type of data structured named: `FormatterField`, which you can build in a tree structure way.
+* Selectors name convention:`Selector name: get<Noun>`
+* Filter async action payload response: Just to assure that we save want store only the fields that we wanted. I create a type of data structured named: `FormatterField`, which you can build in a tree structure way, allowing filtered only the field that want to persist into our store.
 * Following top down best practice. (Most important and public collaborates first, like a news paper)
 * Favor React controller component over uncontrolled component. (In order to follow single source of truth principle as much as possible, and also to get component easier to work with).
 * BEM: using block element modifier and with some variation of SMACSS like (`is-visible` instead of `block--visible`) is a really clean way to style components. Also it's a really a performance way to style component instead use neested selectors. (you don't care any more about not pass to 3 nested level)
@@ -82,6 +81,7 @@ In order to generate out of the box the dispatcher action by `api-service` middl
 * Immutablejs: For performance reason, allowing us to perform shallow equality and avoid unheeded rendering. (only for container component and reducer layer. In order to avoid problems when handling data, try to minimize the interoperability, and only keep your container component with immutable info. Lets dumb components with native objects.
 * Lodash: For cross browsing support, performance and reliable way to handler data. (only for dump component and action creators).
 * Prettier/husky/lint-staged/Eslint, Help us to avoid commit and push some code that don't follow with the default standards of the project and also prevent to push some code that don't pass the UT. (It's already configure airbnb, and eslint:recommended practices)
+* Following in each part of the app SRP (Single responsibility principle). One reason to change. Each module/class/function has their own level of the abstraction.
 
 ## Spotify API integration
 
@@ -89,7 +89,7 @@ Some of reasons why I chose connect by `Authorization Code`:
 
 1. The original example of this test project was create a part of a SaaS which give you a full platform for internment, such as Music, Video, etc. 
 The data that serve to the user, will be suggested, filtered, and in some cases changed, depends on the user which is log in. 
-In that business context, I need to have a full control over the information that need to display, so I need to create a kind of gateway/proxy from our API to 
+In that business context, I need to have a full control over the information that need to display, so I need to create a kind of gateway/proxy between out API to the external APIs services. 
 the the external API services. For that reason, among others, I think it's better to connect with Spotify API by `Authorization Code` fit better than `Client Credentials` and `Implicit Grant`.
 
 Some of reasons why I didn't like to connect by `Client Credentials` or `Implicit Grant`:
