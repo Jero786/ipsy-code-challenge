@@ -4,11 +4,27 @@ $height-header: 10vh;
 
 .bys-home-page {
 
-  background-color: lightgray;
+  background: url(https://ik.imagekit.io/cdnstorage786/2800x2100-164069926-black-blue-wallpapers_fa-_bUC4D.jpg) center / auto;
+  background-size: cover;
+  background-position-y: 20px;
+
+  &__title {
+    color: $white;
+    position: fixed;
+    top: 30vh;
+    align-self: center;
+  }
+
+  .bys-loading {
+    position: fixed;
+    top: 30vh;
+    align-self: center;
+    font-size: 2em;
+  }
 
   &__header {
     text-align: center;
-    background-color: $grayDarker;
+    background-color: black;
     height: $height-header;
     display: flex;
     align-items: center;
@@ -26,7 +42,7 @@ $height-header: 10vh;
         &:hover {
           cursor: pointer;
           transition: all 1s;
-          opacity: .5;
+          opacity: 1;
         }
       }
 
@@ -57,7 +73,6 @@ $height-header: 10vh;
   }
 
   &__body {
-    background-color: lightgray;
     overflow-y: auto;
 
     @include bp(xs) {
@@ -91,13 +106,17 @@ $height-header: 10vh;
       .bys-card {
 
         padding: 1em;
+        opacity: .7;
+
+        &:hover {
+          opacity: 1;
+        }
 
         .card__image:hover {
           transition: all .5s;
           transform: translateY(-10px);
-          box-shadow: 5px 5px 10px 10px gray;
+          box-shadow: 5px 0 15px 5px black;
           cursor: pointer;
-          opacity: .6;
         }
       }
     }

@@ -1,5 +1,5 @@
 {
-    "name": "ypsi-code-challenge",
+    "name": "ipsy-code-challenge",
     "description": "A code challenge about connect with API-Spotify",
     "version": "1.0.0",
     "scripts": {
@@ -7,9 +7,11 @@
         "test": "NODE_ENV=test ts-jest",
         "test:watch": "NODE_ENV=test jest --watch",
         "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
+
         "build:client": "next build src/client",
         "build:server": "tsc --project tsconfig.server.json",
-        "start": "cross-env NODE_ENV=production node dist/server"
+        "start": "cross-env NODE_ENV=production node dist/server -p $PORT",
+        "heroku-postbuild": "npm run build"
     },
     "dependencies": {
         "body-parser": "^1.19.0",

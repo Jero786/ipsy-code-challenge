@@ -1,4 +1,4 @@
-# Ypsy Code Challenge
+# Ipsy Code Challenge
 
 ### Prerequisites
 

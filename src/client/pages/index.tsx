@@ -26,7 +26,10 @@ class WelcomePage extends React.PureComponent<Props, {}> {
                     <div className="bys-welcome-page__box">
                         <h1 className="bys-welcome-page__box-title">Be Your Self</h1>
                         <Link href="/api/v1/refresh-token">
-                            <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            <button
+                                type="button"
+                                className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                            >
                                 WELCOME
                             </button>
                         </Link>

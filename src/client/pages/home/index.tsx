@@ -13,7 +13,7 @@ import Layout from '../../../client/components/layout/layout';
 import Card from '../../components/card/card';
 import Loading from '../../components/loading/loading';
 
-// Actions
+// Operations
 import { catalogOperation, stateSelectors } from '../../state/ducks/catalog';
 
 interface Props {
@@ -70,7 +70,7 @@ class HomePage extends React.PureComponent<Props, State> {
         }
 
         if (!isRequesting && (!tracks || tracks.length === 0)) {
-            emptyMessageEl = <h2>Search your music now!</h2>;
+            emptyMessageEl = <h2 className="bys-home-page__title">Search your music now!</h2>;
         }
 
         return (
