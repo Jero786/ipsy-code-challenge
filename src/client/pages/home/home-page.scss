@@ -12,6 +12,10 @@ $height-header: 10vh;
     color: $white;
     position: fixed;
     top: 30vh;
+
+    @include bp(xs) {
+      top: 10vh;
+    }
     align-self: center;
   }
 

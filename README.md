@@ -1,4 +1,35 @@
-# Ipsy Code Challenge
+# Ipsy - Be Your Self  
+
+### Short description
+
+A SaaS internainament platform, that suggest the best content of each particular user that use the platform. More the user use the platform, listen their music from Spotigy, reading doc from New Yor Time, or others integratino Books API, more accurate the platform will suggest the content for him.   
+
+### Long Description
+
+The idea of Be Your Self platform (BYS), it’s create a self recreative environment for a user, in which the user could spend their time in a friendly environment. For instance, if he likes to relax or to study, while listen a quite music, or watch a movie at the weekend, read some interesting articles, etc. 
+The important part of the system is: All the content that consume the user from the platform will be tracked. So, each music that the user listen, each movie and each document will be tracked, in order to to be processed later. 
+
+### Use Case Example: 
+
+Some user, already logged-in, perform a search of a particular song like: "Elvis - Can't Help Falling In Love". After that, the system generate a `HistorySoundTrack` object, which contain the information like: user information, track sound information, location of the user, etc. 
+After that, in deffered time, some scheduleded Job from BYS platform `SoundTrackLyricsHydratationJob`, will process each `HistorySoundTrack` and will search each lyrics of each song using [Genius](https://genius.com/developers) API. The result of this operation is get the lyrics/text from each song, and then persist that in some non-sql database, like MongoDB, Cassandra, Hadoop, etc.
+Then other Job `SoundTrackProfileGeneratorJob`, also in deferred time, will be in charge to get each lyrics already persisted, and will be analized usign [`ML-Analizer`](https://rapidapi.com/mlanalyzer/api/ml-analyzer) API. That API, will give us a semantic content like: Text Classification, Sentiment Analysis, Stock symbol extraction, Person Names Extractor, Language Detection, Locations Extractor, Adult content Analyzer, and so on. With all this content/information, BYS platform will generate a particular profile for each sound track. So once, we have all the song "normalized", with semantic information. So then `UserProfileGeneratorJob`, will be ready to start to generate the each `UserProfile` by `User`, that will be used to generate the module of suggestion of the platform `SuggestionUserIndicatorAPI`. That module, is the core of BYS. Because, more the user use the platform (more tracking data), so more accurate will be generated their profile. The same idea, will be implemented for Videos Section and Reading Section too. 
+-------------------------------
+
+### Scope Modules
+
+| Module name                    | Interview scope |
+|--------------------------------|:---------------:|
+| Sign-up                        |        NO       |
+| Sign-In                        |       YES       |
+| Welcome Page                   |       YES       |
+| Music Home Page                |       YES       |
+| SoundTrackLyricsHydratationJob |        NO       |
+| SoundTrackProfileGeneratorJob  |        NO       |
+| UserProfileGeneratorJob        |        NO       |
+| SuggestionUserIndicatorAPI     |        NO       |
+| Reading Home Page              |        NO       |
+| Video Home Page                |        NO       |
 
 ### Prerequisites
 
@@ -10,12 +41,12 @@
 $ npm install -g eslint jest now
 $ npm install
 ```
-## In order to configure pre-commit that will execute prettier-eslint & unit-test before commit
+### In order to configure pre-commit that will execute prettier-eslint & unit-test before commit
 ```
 $ npm install --save-dev husky prettier-eslint
 ```
 
-## Setting environment variable
+### Setting environment variable
 
 In order to connect with Spotify API, you will need create your account to get your public and private client id.
 Once you get both, please create in a ROOT file, an new file called `.env` with the following information:
@@ -31,8 +62,7 @@ API_SPOTIFY_URL_AUTHORIZE=https://accounts.spotify.com/authorize
 API_SPOTIFY_SCOPES=user-read-private user-read-email
 ```
 
-**NOTE**:
-In case that use `nvm` you will need to set by default  Node+6 (eg: `nvm alias default v10.8.0`)
+**NOTE**: In case that use `nvm` you will need to set by default  Node+6 (eg: `nvm alias default v10.8.0`)
 
 ### Starting the application
 
@@ -45,16 +75,16 @@ And then, open a browser with the following link:
 ```
 http://localhost:8888
 ```
-## Running unit tests
+### Running unit tests
 ```
 $ npm run test
 ```
-## Running unit tests in watch mode
+### Running unit tests in watch mode
 ```
 $ npm run test:watch
 ```
 
-## Some design, principles and best practices
+### Some design, principles and best practices
 
 * Re-Ducks: Following this proposal structure improve modularity and encapsulation (only expose `index.tsx` from each dock folder, for instance: `state/ducks/catalog/index.ts`). Also allow us to scale better and improve testability of actions, action creators, reducers, operators and selectors in a really flexible way.
 * Typescript: Implementing check typing in a dynamic interpreted language like JS, help us and also to Ides, to catch typos and errors while your are coding. That is a really important when you app will be large.
@@ -84,7 +114,7 @@ Following that convention, help us to avoid boilerplate code using `api-service.
 * Action Types names convention is:
 1. ACTION: Effect is most commonly a noun that means the result of an action —> <NOUN>_<VERB> —> `CATALOG_ADDED` | `CATALOG_REMOVED`
 1. ASYNC ACTION CREATOR: Affect is most commonly a verb —> <VERB><NOUN> —> `REQUESTING_CATALOG` | `REQUESTING_CATALOG_COMPLETED` | `REQUESTING_CATALOG_FAILED`
-## Frameworks & libraries
+### Frameworks & libraries
 * NextJS used to provider server rendering for performance, SEO and Code splitting reasons.
 * React-testing-Library: A really useful library to help us to test React component in a clean, predictable and readable way.
 * Redux: The reactive programming allow us to build more predictable, scalable & Solid web application.
@@ -93,7 +123,7 @@ Following that convention, help us to avoid boilerplate code using `api-service.
 * Prettier/husky/lint-staged/Eslint, Help us to avoid commit and push some code that don't follow with the default standards of the project and also prevent to push some code that don't pass the UT. (It's already configure airbnb, and eslint:recommended practices)
 * Following in each part of the app SRP (Single responsibility principle). One reason to change. Each module/class/function has their own level of the abstraction.
 
-## Spotify API integration
+### Spotify API integration
 
 Some of reasons why I chose connect by `Authorization Code`:
 
@@ -111,8 +141,7 @@ Some of reasons why I didn't like to connect by `Client Credentials` or `Implici
 1. Business rule, Be Your Safe: In order to populate our database with tracking information to improve our system of suggestion, we need to create like a gateway/proxy of request between our user platform and the external services.
 1. Also, making server side request you have more control, we could implement cache request, make filter, etc.
 
-
-## Testing tips
+### Testing tips
 
 * Test should follow the SRP principle too (single responsibility principle). Do one thing, test one thing.
 * Test files, should be ended with `*.test.tx` and should be placed in the same folder from their SUT (Subject under test).
@@ -123,13 +152,12 @@ Some of reasons why I didn't like to connect by `Client Credentials` or `Implici
 * Putting comments in the header of the test is an anti-pattern, avoid them.
 * Don't test action isolate, when testing reducer I like to test action as well in order to avoid unwanted testing. (I know that sounds like a integrating test instead of unit test, but it make sense for me.)
 
-## Pending implementations
+### Techical pending implementations stuff
 
 * Implement Normalize, to have a flatten state. That help you to make more performance the shallow equality performed and also to deal with a easy structure store.
 * Implement some CI such as Circle or Travis.
 * E2E Testing with Cypress. It's really powerful implement it, in order to save time in the regressions testing.
 * Implement some Lib report in Backend side and also in front-end side to be sure that your app are working properly, otherwise send a email when throws some error.
 
-## Picture from a simple Home Page:
-
-![](https://i.ibb.co/yq4wbRq/Screen-Shot-2019-06-11-at-12-54-01-PM.png)
+### Deployed link:
+[Link APP](https://pure-shore-67296.herokuapp.com)
