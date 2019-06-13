@@ -59,6 +59,16 @@ export class WelcomePage extends React.PureComponent<{}, {}> {
                         <h1 className="bys-welcome-page__box-title">Be Your Self</h1>
                         <div className="bys-welcome-page__cards">{cardsEl}</div>
                     </div>
+                    <p className="bys-welcome-page__description">
+                        Have you ever imagine a single platform which contain all you needed?
+                    </p>
+                    <p className="bys-welcome-page__description bys-welcome-page__description--long">
+                        Be Your Self is a SaaS platform that give you in seconds, your favorite content! such as your
+                        favorite Musica, your favorite Books, your favorites Movies!
+                    </p>
+                    <p className="bys-welcome-page__description bys-welcome-page__description--long">
+                        The more we know about you.. better will be the content that will give you!
+                    </p>
                 </div>
             </Layout>
         );
