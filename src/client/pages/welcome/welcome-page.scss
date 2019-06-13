@@ -1,4 +1,4 @@
-@import '../style/commons';
+@import '../../style/commons';
 
 .bys-welcome-page {
   display: flex;
@@ -7,13 +7,17 @@
   background: url(https://ik.imagekit.io/cdnstorage786/164069941-black-blue-wallpapers_Q1cpimTJO.jpg) center / cover;
   height: 100vh;
 
+  @include bp(xs) {
+    height: auto;
+  }
 
   &__box {
     text-align: center;
     margin-top: -50vh;
 
     @include bp(xs) {
-      margin-top: -65vh
+      font-size: .8em;
+      margin-top: 0;
     }
 
     h1 {
@@ -29,6 +33,15 @@
     &-title {
       color: $white;
       text-shadow: 5px 5px 5px black;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+
+    @include bp(xs) {
+      flex-direction: column;
     }
   }
 }

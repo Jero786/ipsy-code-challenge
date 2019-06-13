@@ -2,7 +2,7 @@
 
 $height-header: 10vh;
 
-.bys-home-page {
+.bys-music-page {
 
   background: url(https://ik.imagekit.io/cdnstorage786/2800x2100-164069926-black-blue-wallpapers_fa-_bUC4D.jpg) center / auto;
   background-size: cover;
@@ -117,10 +117,7 @@ $height-header: 10vh;
         }
 
         .card__image:hover {
-          transition: all .5s;
-          transform: translateY(-10px);
-          box-shadow: 5px 0 15px 5px black;
-          cursor: pointer;
+          @include hover-card;
         }
       }
     }

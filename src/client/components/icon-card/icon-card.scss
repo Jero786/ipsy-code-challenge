@@ -1,0 +1,28 @@
+@import '../../../client/style/commons';
+
+.bys-icon-card {
+
+  padding: 2em;
+
+  &__title {
+    color: #fff;
+    font-size: 2em;
+    padding: 1em;
+  }
+
+  &__description {
+    color: #fff;
+    font-size: 1.5em;
+    padding: 1em;
+
+    min-width: 200px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover {
+    @include hover-card;
+  }
+}

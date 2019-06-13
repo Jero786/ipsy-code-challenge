@@ -25,6 +25,13 @@ $lg-width: 1200px;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
+@mixin hover-card {
+  transition: all .5s;
+  transform: translateY(-10px);
+  box-shadow: 5px 0 15px 5px black;
+  cursor: pointer;
+}
+
 @mixin bp($min: 0, $max: 0) {
 	$type: type-of($min);
 

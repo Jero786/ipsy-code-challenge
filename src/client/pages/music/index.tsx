@@ -1,5 +1,5 @@
 // Resources
-import './home-page.scss';
+import './music-page.scss';
 
 // Libs
 import React from 'react';
@@ -64,24 +64,25 @@ class HomePage extends React.PureComponent<Props, State> {
                         title={get(track, 'name', '')}
                         imgSrc={get(track, 'album.images.0.url')}
                         link={get(track, 'preview_url')}
+                        icon="volume_up"
                     />
                 );
             });
         }
 
         if (!isRequesting && (!tracks || tracks.length === 0)) {
-            emptyMessageEl = <h2 className="bys-home-page__title">Search your music now!</h2>;
+            emptyMessageEl = <h2 className="bys-music-page__title">Search your music now!</h2>;
         }
 
         return (
             <Layout title="Be your self" description="Some description useful for SEO">
-                <div className="bys-home-page">
-                    <div className="bys-home-page__header">
+                <div className="bys-music-page">
+                    <div className="bys-music-page__header">
                         <form action="" onSubmit={this.handleOnSearch}>
-                            <div className="bys-home-page__header-search mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <div className="bys-music-page__header-search mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <label
                                     htmlFor="input-2"
-                                    className="bys-home-page__header-search-label mdl-textfield__label"
+                                    className="bys-music-page__header-search-label mdl-textfield__label"
                                 >
                                     Search
                                 </label>
@@ -99,15 +100,15 @@ class HomePage extends React.PureComponent<Props, State> {
                                     onClick={this.handleOnSearch}
                                     tabIndex={0}
                                     onKeyPress={() => {}}
-                                    className="bys-home-page__header-search-icon material-icons"
+                                    className="bys-music-page__header-search-icon material-icons"
                                 >
                                     search
                                 </i>
                             </div>
                         </form>
                     </div>
-                    <div className="bys-home-page__body">
-                        <div className={`bys-home-page__body-catalogs ${isRequesting ? ' is-loading' : ''}`}>
+                    <div className="bys-music-page__body">
+                        <div className={`bys-music-page__body-catalogs ${isRequesting ? ' is-loading' : ''}`}>
                             {catalogsEl}
                             {loadingEl}
                             {emptyMessageEl}

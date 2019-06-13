@@ -102,7 +102,7 @@ export default app => {
 
                     // we can also pass the token to the browser to make requests from there
                     res.redirect(
-                        `/home?${querystring.stringify({
+                        `/welcome?${querystring.stringify({
                             access_token,
                             refresh_token,
                         })}`,
